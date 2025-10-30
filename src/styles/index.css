@@ -184,3 +184,43 @@
 .glass-nav .nav-link:focus-visible::after {
 	transform: scaleX(1);
 }
+
+/* ------------------------------
+   CV page: larger PDF viewport
+   ------------------------------ */
+.cv-toolbar {
+	/* keep actions aligned and separated from the viewer */
+	gap: .5rem;
+}
+
+/* Make the PDF area tall enough to view comfortably across devices */
+.cv-card {
+	border-radius: var(--bs-border-radius-xl);
+}
+
+.cv-frame {
+	display: block;
+	width: 100%;
+	/* Responsive, near full-viewport height without covering navbar/footer */
+	height: 82vh;
+	border: 0;
+	background: transparent;
+}
+
+@media (min-width: 768px) {
+	.cv-frame { height: 88vh; }
+}
+
+@media (min-width: 1200px) {
+	.cv-frame { height: 90vh; }
+}
+
+/* Print styles: hide chrome and backgrounds when printing */
+@media print {
+	body { background: #fff !important; }
+	.glass-bg,
+	.glass-nav,
+	.cv-toolbar,
+	footer { display: none !important; }
+	.cv-card { box-shadow: none !important; border: 0 !important; }
+}
