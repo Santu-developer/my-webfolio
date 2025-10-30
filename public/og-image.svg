@@ -9,7 +9,7 @@
   <circle cx="1100" cy="-50" r="300" fill="rgba(124,92,255,0.2)"/>
   <circle cx="100" cy="50" r="260" fill="rgba(34,211,238,0.18)"/>
   <rect x="60" y="200" width="1080" height="230" rx="24" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)"/>
-  <text x="100" y="280" font-size="56" fill="white" font-family="Segoe UI, Roboto, Arial, sans-serif">Anmol Bhargav</text>
-  <text x="100" y="340" font-size="36" fill="url(#g)" font-family="Segoe UI, Roboto, Arial, sans-serif">Full Stack Developer</text>
+  <text x="100" y="280" font-size="56" fill="white" font-family="Segoe UI, Roboto, Arial, sans-serif">Santosh Patidar</text>
+  <text x="100" y="340" font-size="36" fill="url(#g)" font-family="Segoe UI, Roboto, Arial, sans-serif">Java Full Stack Developer</text>
   <text x="100" y="400" font-size="24" fill="#a3acc2" font-family="Segoe UI, Roboto, Arial, sans-serif">React • Spring Boot • Docker • Kubernetes • Microservices</text>
 </svg>

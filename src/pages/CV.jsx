@@ -1,9 +1,25 @@
 import { FiPrinter, FiDownload } from 'react-icons/fi'
 import { motion } from 'framer-motion'
 import { headerVariant } from '../utils/motion'
+import { useEffect, useState } from 'react'
 
 export default function CV() {
-  const hasPDF = true // We can't detect presence at build time; show viewer and graceful fallback
+  const [hasPDF, setHasPDF] = useState(true)
+
+  // On client, check if /cv.pdf exists so Netlify/GH Pages don't show a broken embed
+  useEffect(() => {
+    let cancelled = false
+    fetch('/cv.pdf', { method: 'HEAD' })
+      .then((res) => {
+        if (!cancelled) setHasPDF(res.ok)
+      })
+      .catch(() => {
+        if (!cancelled) setHasPDF(false)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
   return (
     <main className="py-5 position-relative overflow-hidden">
       <div className="glass-bg glass-cv"></div>
