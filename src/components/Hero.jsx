@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { FiDownload } from 'react-icons/fi'
 import profileImg from '../assets/Profile1.png'
 import { staggerChildren, fadeUp } from '../utils/motion'
+import socials from '../data/socials'
 
 export default function Hero() {
   return (
@@ -78,6 +79,58 @@ export default function Hero() {
                   style={{ width: '100%', height: '100%', transform: 'rotate(-4deg)'  }}
                 />
               </motion.div>
+              
+              {/* Social Links Below Image */}
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+                viewport={{ once: true }}
+                className="d-flex justify-content-center gap-3 mt-4"
+              >
+                {socials.slice(0, 3).map((social, index) => {
+                  const Icon = social.icon
+                  const isEmail = social.name === 'Email'
+                  const href = isEmail ? `mailto:${social.url}` : social.url
+                  
+                  return (
+                    <motion.a
+                      key={social.name}
+                      href={href}
+                      target={isEmail ? '_self' : '_blank'}
+                      rel={isEmail ? '' : 'noopener noreferrer'}
+                      className="btn btn-outline-primary rounded-circle d-flex align-items-center justify-content-center"
+                      style={{ width: '50px', height: '50px' }}
+                      whileHover={{ 
+                        scale: 1.1, 
+                        backgroundColor: 'var(--bs-primary)',
+                        color: 'white',
+                        borderColor: 'var(--bs-primary)'
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 + index * 0.1 }}
+                      viewport={{ once: true }}
+                      aria-label={social.name}
+                      title={social.name}
+                    >
+                      <Icon size={18} />
+                    </motion.a>
+                  )
+                })}
+              </motion.div>
+              
+              {/* Optional Tagline */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.9 }}
+                viewport={{ once: true }}
+                className="text-muted small text-center mt-2 mb-0"
+              >
+                
+              </motion.p>
             </motion.div>
           </div>
         </div>
