@@ -1,26 +1,31 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import emailjs from '@emailjs/browser'
-import { FiMail, FiSend } from 'react-icons/fi'
+import { FiMail, FiSend, FiCheckCircle } from 'react-icons/fi'
 import socials from '../data/socials'
 
 export default function Contact() {
-  const formRef = useRef(null)
   const [status, setStatus] = useState('idle') // idle | sending | success | error
-
-  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
-  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
-  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-  const ready = Boolean(serviceId && templateId && publicKey)
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    if (!ready) return
+    
     try {
       setStatus('sending')
-      await emailjs.sendForm(serviceId, templateId, formRef.current, { publicKey })
-      setStatus('success')
-      formRef.current?.reset()
+      const formData = new FormData(e.target)
+      
+      // Submit to Netlify
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
+      })
+      
+      if (response.ok) {
+        setStatus('success')
+        e.target.reset()
+      } else {
+        setStatus('error')
+      }
     } catch (err) {
       console.error(err)
       setStatus('error')
@@ -52,44 +57,79 @@ export default function Contact() {
             >
               <FiMail /> Send a message
             </h3>
-            {/* Tip removed per request */}
-            <form
-              ref={formRef}
-              onSubmit={onSubmit}
-              className="d-grid gap-3"
-            >
-              <input
-                name="user_name"
-                placeholder="Your name"
-                required
-                className="form-control"
-              />
-              <input
-                name="user_email"
-                placeholder="Your email"
-                type="email"
-                required
-                className="form-control"
-              />
-              <textarea
-                name="message"
-                placeholder="Your message"
-                rows={5}
-                required
-                className="form-control"
-              />
-              <button className="btn btn-primary" disabled={!ready || status === 'sending'}>
-                <FiSend /> {status === 'sending' ? 'Sending…' : 'Send Message'}
-              </button>
-              {status === 'success' && (
-                <p className="text-success">Thanks! Your message has been sent.</p>
-              )}
-              {status === 'error' && (
-                <p className="text-danger">
-                  Oops, something went wrong. Please try again later.
+            
+            {status === 'success' ? (
+              <motion.div 
+                className="text-center py-5"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <FiCheckCircle size={64} className="text-success mb-3" />
+                <h4 className="text-success mb-3">Thank You! 🎉</h4>
+                <p className="mb-2">Your message has been sent successfully!</p>
+                <p className="text-muted mb-4">
+                  I'll get back to you as soon as possible. Check your email for a confirmation.
                 </p>
-              )}
-            </form>
+                <button 
+                  className="btn btn-primary"
+                  onClick={() => setStatus('idle')}
+                >
+                  Send Another Message
+                </button>
+              </motion.div>
+            ) : (
+              <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                onSubmit={onSubmit}
+                className="d-grid gap-3"
+              >
+                {/* Hidden fields for Netlify */}
+                <input type="hidden" name="form-name" value="contact" />
+                <p className="d-none">
+                  <label>
+                    Don't fill this out if you're human: <input name="bot-field" />
+                  </label>
+                </p>
+
+                <input
+                  name="name"
+                  placeholder="Your name"
+                  required
+                  className="form-control"
+                />
+                <input
+                  name="email"
+                  placeholder="Your email"
+                  type="email"
+                  required
+                  className="form-control"
+                />
+                <input
+                  name="subject"
+                  placeholder="Subject"
+                  className="form-control"
+                />
+                <textarea
+                  name="message"
+                  placeholder="Your message"
+                  rows={5}
+                  required
+                  className="form-control"
+                />
+                <button className="btn btn-primary" disabled={status === 'sending'}>
+                  <FiSend /> {status === 'sending' ? 'Sending…' : 'Send Message'}
+                </button>
+                {status === 'error' && (
+                  <p className="text-danger">
+                    Oops, something went wrong. Please try again later.
+                  </p>
+                )}
+              </form>
+            )}
             </motion.div>
           </div>
         </motion.div>

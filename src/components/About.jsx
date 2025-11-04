@@ -127,7 +127,7 @@ export default function About() {
             Professional Experience
           </motion.h3>
           <div className="card p-3 mt-3">
-            <strong>Full Stack Developer | xyz Techs, Pune</strong>
+            <strong>Full Stack Developer | Sonnen Techs, Indore</strong>
             <div className="text-muted">May 2024 – Present</div>
             <ul className="mt-3 mb-0" style={{ lineHeight: 1.7 }}>
               <li>
