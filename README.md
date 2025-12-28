@@ -135,21 +135,28 @@ Tip: You can use EmailJS with your own SMTP (safe) by adding an SMTP service in 
 
 ### Option B — GitHub Pages
 
-Already configured in `package.json`:
+#### Recommended (free) — GitHub Actions (no manual `dist` commits)
 
-```json
-"scripts": {
-	"predeploy": "npm run build",
-	"deploy": "gh-pages -d dist"
-}
-```
+This repo includes an auto-deploy workflow: `.github/workflows/deploy.yml`.
 
-Deploy:
+Steps:
+1) Push the code to GitHub (branch: `main`).
+2) In GitHub repo → **Settings** → **Pages**.
+3) Under **Build and deployment**, set **Source** = **GitHub Actions**.
+4) Push again (or go to **Actions** tab and run the workflow manually).
+5) Your site URL will be:
+   - `https://<username>.github.io/<repo-name>/`
+
+Important: If you see `src/main.jsx` 404 on the live site, it means GitHub Pages is serving the *source* `index.html` instead of the built `dist` output. Using the Actions workflow fixes that.
+
+#### Alternative — `gh-pages` (manual)
+
+You can still use:
 ```powershell
 npm run deploy
 ```
 
-If deploying under a subpath, set `base` in `vite.config.js` to `'/your-repo-name/'`.
+If deploying under a subpath, the workflow auto-sets the correct Vite base. For manual deploys, you may need to set `BASE_PATH` while building.
 
 ## 🛠️ Troubleshooting
 
