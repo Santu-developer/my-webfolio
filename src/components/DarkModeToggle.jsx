@@ -7,7 +7,7 @@ export default function DarkModeToggle() {
   return (
     <button
       aria-label="Toggle dark mode"
-      className="btn btn-outline-secondary btn-sm d-inline-flex align-items-center"
+      className="btn btn-outline-secondary btn-sm d-inline-flex align-items-center justify-content-center px-3"
       onClick={toggle}
       title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
