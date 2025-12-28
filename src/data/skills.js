@@ -18,6 +18,10 @@ import {
   SiJira,
   SiBootstrap,
   SiTailwindcss,
+  SiPostgresql,
+  SiMongodb,
+  SiStripe,
+  SiNodedotjs,
 } from 'react-icons/si'
 import { FiDatabase, FiCloud, FiCode } from 'react-icons/fi'
 
@@ -37,9 +41,14 @@ const skills = [
   { name: 'Spring Security (JWT)', level: 72, icon: SiSpring, category: 'Backend' },
   { name: 'Hibernate JPA', level: 75, icon: SiHibernate, category: 'Backend' },
   { name: 'RESTful APIs', level: 80, icon: SiSpring, category: 'Backend' },
+  { name: 'Node.js', level: 68, icon: SiNodedotjs, category: 'Backend' },
+  { name: 'Stripe', level: 62, icon: SiStripe, category: 'Backend' },
 
   // Databases
   { name: 'MySQL', level: 78, icon: SiMysql, category: 'Database' },
+  { name: 'PostgreSQL', level: 66, icon: SiPostgresql, category: 'Database' },
+  { name: 'MongoDB', level: 64, icon: SiMongodb, category: 'Database' },
+  { name: 'SQL', level: 78, icon: FiDatabase, category: 'Database' },
   { name: 'MS SQL Server', level: 70, icon: FiDatabase, category: 'Database' },
 
   // Cloud & DevOps

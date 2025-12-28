@@ -1,35 +1,28 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { FiMail, FiSend, FiCheckCircle } from 'react-icons/fi'
-import socials from '../data/socials'
 
 export default function Contact() {
-  const [status, setStatus] = useState('idle') // idle | sending | success | error
+  const [status, setStatus] = useState('idle') // idle | success
 
-  const onSubmit = async (e) => {
-    e.preventDefault()
-    
-    try {
-      setStatus('sending')
-      const formData = new FormData(e.target)
-      
-      // Submit to Netlify
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString(),
-      })
-      
-      if (response.ok) {
-        setStatus('success')
-        e.target.reset()
-      } else {
-        setStatus('error')
-      }
-    } catch (err) {
-      console.error(err)
-      setStatus('error')
-    }
+  const nextUrl = useMemo(() => {
+    if (typeof window === 'undefined') return ''
+    const base = `${window.location.origin}${import.meta.env.BASE_URL}`
+    return `${base}?sent=1#contact`
+  }, [])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const sent = new URLSearchParams(window.location.search).get('sent')
+    if (sent === '1') setStatus('success')
+  }, [])
+
+  const resetSuccess = () => {
+    setStatus('idle')
+    if (typeof window === 'undefined') return
+    const url = new URL(window.location.href)
+    url.searchParams.delete('sent')
+    window.history.replaceState({}, '', url.toString())
   }
 
   return (
@@ -66,34 +59,33 @@ export default function Contact() {
                 transition={{ duration: 0.5 }}
               >
                 <FiCheckCircle size={64} className="text-success mb-3" />
-                <h4 className="text-success mb-3">Thank You! 🎉</h4>
+                <h4 className="text-success mb-3">Thank You!</h4>
                 <p className="mb-2">Your message has been sent successfully!</p>
                 <p className="text-muted mb-4">
                   I'll get back to you as soon as possible. Check your email for a confirmation.
                 </p>
                 <button 
                   className="btn btn-primary"
-                  onClick={() => setStatus('idle')}
+                  onClick={resetSuccess}
                 >
                   Send Another Message
                 </button>
               </motion.div>
             ) : (
               <form
-                name="contact"
+                action="https://formsubmit.co/santoshpatidar.dev@gmail.com"
                 method="POST"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
-                onSubmit={onSubmit}
                 className="d-grid gap-3"
               >
-                {/* Hidden fields for Netlify */}
-                <input type="hidden" name="form-name" value="contact" />
-                <p className="d-none">
-                  <label>
-                    Don't fill this out if you're human: <input name="bot-field" />
-                  </label>
-                </p>
+                {/* FormSubmit options */}
+                <input type="hidden" name="_subject" value="Portfolio Contact" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input
+                  type="hidden"
+                  name="_autoresponse"
+                  value="Thanks for reaching out! Your message has been received successfully. I’ll get back to you soon."
+                />
+                {nextUrl ? <input type="hidden" name="_next" value={nextUrl} /> : null}
 
                 <input
                   name="name"
@@ -120,14 +112,9 @@ export default function Contact() {
                   required
                   className="form-control"
                 />
-                <button className="btn btn-primary" disabled={status === 'sending'}>
-                  <FiSend /> {status === 'sending' ? 'Sending…' : 'Send Message'}
+                <button type="submit" className="btn btn-primary">
+                  <FiSend /> Send Message
                 </button>
-                {status === 'error' && (
-                  <p className="text-danger">
-                    Oops, something went wrong. Please try again later.
-                  </p>
-                )}
               </form>
             )}
             </motion.div>
@@ -137,5 +124,3 @@ export default function Contact() {
     </section>
   )
 }
-
-const inputStyle = {}

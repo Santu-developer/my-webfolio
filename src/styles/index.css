@@ -1,5 +1,33 @@
 /* Base color + glassmorphism partitions (same hue, lighter/darker areas) */
 
+/* ------------------------------
+   Global typography (site-wide)
+   ------------------------------ */
+:root {
+	/* Modern, popular sans stack; loads Plus Jakarta Sans via Google Fonts */
+	--bs-font-sans-serif: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+		"Noto Sans", "Liberation Sans", sans-serif;
+	--bs-body-font-family: var(--bs-font-sans-serif);
+	/* Keep standard sizing but slightly improve readability */
+	--bs-body-font-size: 1rem;
+	--bs-body-line-height: 1.65;
+}
+
+body {
+	font-family: var(--bs-body-font-family);
+	font-size: var(--bs-body-font-size);
+	line-height: var(--bs-body-line-height);
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings: a bit tighter tracking for a more premium look */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+	letter-spacing: -0.015em;
+}
+
 :root {
 	/* Unified base color requested: rgb(27,36,45) */
 	--base-rgb: 27,36,45;

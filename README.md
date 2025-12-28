@@ -14,7 +14,7 @@ Production‑ready React 18 + Vite portfolio with Bootstrap 5, glassmorphism, da
 - Glassmorphism backgrounds with animated partitions (dark) and refined light palettes
 - Framer Motion animations (reveals, stagger, micro-interactions)
 - Sections: Hero, About, Skills, Projects, Contact, CV page, Project Detail
-- EmailJS contact form (env‑driven, no server needed)
+- Contact form via FormSubmit (no server/env required)
 - SPA ready: `public/404.html`, `robots.txt`
 
 ## 🧱 Tech Stack
@@ -90,24 +90,9 @@ Two SVG options are available already:
 
 Use either in the navbar by editing `src/components/LogoMark.jsx` or replacing the `<LogoMark />` usage in `Navbar.jsx` with an `<img src={...} />`.
 
-## 📬 Contact Form (EmailJS)
+## 📬 Contact Form
 
-1) Create an EmailJS account and connect a service (Gmail/Outlook/SMTP).
-
-2) Create a template with these variables:
-	 - `{{user_name}}`, `{{user_email}}`, `{{message}}`
-	 - Set “Reply‑To” to `{{user_email}}` (recommended).
-
-3) Create `.env` at project root (do not commit) and fill values:
-```
-VITE_EMAILJS_SERVICE_ID=service_xxxxx
-VITE_EMAILJS_TEMPLATE_ID=template_xxxxx
-VITE_EMAILJS_PUBLIC_KEY=public_xxxxx
-```
-
-4) Restart the dev server and submit the form. Check EmailJS “Email Logs” if anything fails.
-
-Tip: You can use EmailJS with your own SMTP (safe) by adding an SMTP service in the EmailJS dashboard.
+The contact form is configured to submit via its HTML `action=` endpoint (FormSubmit), so no backend or environment variables are required.
 
 ## 🎨 Theming & Glassmorphism
 
