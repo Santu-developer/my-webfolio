@@ -1,28 +1,27 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { FiMail, FiSend, FiCheckCircle } from 'react-icons/fi'
 
 export default function Contact() {
-  const [status, setStatus] = useState('idle') // idle | success
+  const [status, setStatus] = useState('idle') // idle | sending | success | error
+  const submittedRef = useRef(false)
+  const formRef = useRef(null)
 
-  const nextUrl = useMemo(() => {
-    if (typeof window === 'undefined') return ''
-    const base = `${window.location.origin}${import.meta.env.BASE_URL}`
-    return `${base}?sent=1#contact`
-  }, [])
+  const resetSuccess = () => setStatus('idle')
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return
-    const sent = new URLSearchParams(window.location.search).get('sent')
-    if (sent === '1') setStatus('success')
-  }, [])
+  const onSubmit = (e) => {
+    // Let the form submit normally, but into a hidden iframe (no navigation).
+    submittedRef.current = true
+    setStatus('sending')
+  }
 
-  const resetSuccess = () => {
-    setStatus('idle')
-    if (typeof window === 'undefined') return
-    const url = new URL(window.location.href)
-    url.searchParams.delete('sent')
-    window.history.replaceState({}, '', url.toString())
+  const onIframeLoad = () => {
+    // Ignore the initial about:blank load.
+    if (!submittedRef.current) return
+    submittedRef.current = false
+
+    setStatus('success')
+    formRef.current?.reset()
   }
 
   return (
@@ -62,7 +61,7 @@ export default function Contact() {
                 <h4 className="text-success mb-3">Thank You!</h4>
                 <p className="mb-2">Your message has been sent successfully!</p>
                 <p className="text-muted mb-4">
-                  I'll get back to you as soon as possible. Check your email for a confirmation.
+                  I'll get back to you as soon as possible.
                 </p>
                 <button 
                   className="btn btn-primary"
@@ -72,20 +71,32 @@ export default function Contact() {
                 </button>
               </motion.div>
             ) : (
-              <form
-                action="https://formsubmit.co/santoshpatidar.dev@gmail.com"
-                method="POST"
-                className="d-grid gap-3"
-              >
+              <>
+                {/* Hidden iframe target prevents page reload/scroll-to-top */}
+                <iframe
+                  title="contact-submit"
+                  name="contact-submit"
+                  style={{ display: 'none' }}
+                  onLoad={onIframeLoad}
+                />
+
+                <form
+                  ref={formRef}
+                  action="https://formsubmit.co/santoshpatidar.dev@gmail.com"
+                  method="POST"
+                  target="contact-submit"
+                  onSubmit={onSubmit}
+                  className="d-grid gap-3"
+                >
                 {/* FormSubmit options */}
                 <input type="hidden" name="_subject" value="Portfolio Contact" />
-                <input type="hidden" name="_captcha" value="false" />
+                {/* Keep captcha enabled; FormSubmit autoresponse doesn't work when captcha is disabled */}
                 <input
                   type="hidden"
                   name="_autoresponse"
                   value="Thanks for reaching out! Your message has been received successfully. I’ll get back to you soon."
                 />
-                {nextUrl ? <input type="hidden" name="_next" value={nextUrl} /> : null}
+                <input type="hidden" name="_template" value="table" />
 
                 <input
                   name="name"
@@ -112,10 +123,16 @@ export default function Contact() {
                   required
                   className="form-control"
                 />
-                <button type="submit" className="btn btn-primary">
-                  <FiSend /> Send Message
+                <button type="submit" className="btn btn-primary" disabled={status === 'sending'}>
+                  <FiSend /> {status === 'sending' ? 'Sending…' : 'Send Message'}
                 </button>
-              </form>
+                {status === 'error' ? (
+                  <p className="text-danger mb-0">
+                    Oops, something went wrong. Please try again.
+                  </p>
+                ) : null}
+                </form>
+              </>
             )}
             </motion.div>
           </div>
