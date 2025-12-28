@@ -24,6 +24,25 @@ export default function ProjectDetail() {
     )
   }
 
+  const demoUrl = project.links?.demo && project.links.demo !== '#' ? project.links.demo : null
+  const githubUrl = project.links?.github && project.links.github !== '#' ? project.links.github : null
+  const details = project.details || {}
+
+  const renderMaybeList = (value) => {
+    if (!value) return null
+    if (Array.isArray(value)) {
+      if (value.length === 0) return null
+      return (
+        <ul className="mb-0">
+          {value.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      )
+    }
+    return <p className="text-muted mb-0">{value}</p>
+  }
+
   return (
     <main className="py-5 position-relative overflow-hidden">
       <div className="glass-bg glass-detail"></div>
@@ -47,17 +66,70 @@ export default function ProjectDetail() {
             ))}
           </div>
           <div className="d-flex gap-2 mt-2">
-            {project.links?.demo && (
+            {demoUrl && (
               <a className="btn btn-primary" href={project.links.demo} target="_blank" rel="noreferrer">
                 Live Demo
               </a>
             )}
-            {project.links?.github && (
+            {githubUrl && (
               <a className="btn btn-outline-secondary" href={project.links.github} target="_blank" rel="noreferrer">
                 GitHub
               </a>
             )}
           </div>
+
+          {(details.motive || details.architecture || details.techStack || details.features || details.role || details.conclusion || details.improvements) && (
+            <div className="mt-3 d-grid gap-3">
+              {details.motive && (
+                <section>
+                  <h2 className="h5 mb-2">Motive</h2>
+                  {renderMaybeList(details.motive)}
+                </section>
+              )}
+
+              {details.architecture && (
+                <section>
+                  <h2 className="h5 mb-2">Architecture</h2>
+                  {renderMaybeList(details.architecture)}
+                </section>
+              )}
+
+              {details.techStack && (
+                <section>
+                  <h2 className="h5 mb-2">Tech Stack</h2>
+                  {renderMaybeList(details.techStack)}
+                </section>
+              )}
+
+              {details.features && (
+                <section>
+                  <h2 className="h5 mb-2">Features</h2>
+                  {renderMaybeList(details.features)}
+                </section>
+              )}
+
+              {details.role && (
+                <section>
+                  <h2 className="h5 mb-2">My Role</h2>
+                  {renderMaybeList(details.role)}
+                </section>
+              )}
+
+              {details.conclusion && (
+                <section>
+                  <h2 className="h5 mb-2">Conclusion</h2>
+                  {renderMaybeList(details.conclusion)}
+                </section>
+              )}
+
+              {details.improvements && (
+                <section>
+                  <h2 className="h5 mb-2">Future Improvements</h2>
+                  {renderMaybeList(details.improvements)}
+                </section>
+              )}
+            </div>
+          )}
         </motion.article>
       </div>
     </main>
