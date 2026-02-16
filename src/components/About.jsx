@@ -140,18 +140,33 @@ export default function About() {
             <div className="text-muted">May 2024 – Present</div>
             <ul className="mt-3 mb-0" style={{ lineHeight: 1.7 }}>
               <li>
-                Developed and deployed 8+ enterprise web apps (React.js/Angular/Java), improving
-                customer satisfaction by 40%.
+                Developed and deployed enterprise-level web applications using React.js, Angular,
+                and Java, ensuring scalable and maintainable solutions.
               </li>
               <li>
-                Built 15+ RESTful APIs (Spring Boot/MVC + MySQL) serving 1,000+ users with 99.9%
-                uptime and sub-200ms responses.
+                Designed and built RESTful APIs using Spring Boot, Spring MVC, and MySQL,
+                supporting high-volume user interactions with reliable performance.
               </li>
-              <li>Implemented JWT auth with Spring Security, reducing vulnerabilities by 60%.</li>
-              <li>Optimized SQL queries and schema, cutting server load by 45%.</li>
-              <li>Integrated 5+ third-party APIs (PayPal, Stripe) to expand core features ~35%.</li>
-              <li>Led Agile/Scrum sprints; delivered projects ~20% ahead of schedule.</li>
-              <li>Deployed to AWS (EC2, RDS) with Docker & Kubernetes.</li>
+              <li>
+                Implemented secure authentication and authorization using JWT and Spring Security
+                to enhance application security.
+              </li>
+              <li>
+                Optimized database queries and improved schema design to enhance system
+                performance and reduce server load.
+              </li>
+              <li>
+                Integrated multiple third-party APIs such as payment gateways and external
+                services to extend application functionality.
+              </li>
+              <li>
+                Collaborated in Agile/Scrum environments, participating in sprint planning,
+                development, and timely project delivery.
+              </li>
+              <li>
+                Deployed and maintained applications on AWS (EC2, RDS) using Docker and
+                Kubernetes for scalable and containerized deployment.
+              </li>
             </ul>
           </div>
 
@@ -170,7 +185,7 @@ export default function About() {
                 <strong>
                   PG-DAC (Post Graduate Diploma in Advanced Computing), C-DAC (Centre for Development of Advanced Computing)
                 </strong>
-                <div className="text-muted">Expected Feb 2025</div>
+                <div className="text-muted">Feb 2025</div>
               </div>
             </motion.div>
             <motion.div className="col" variants={fadeUp(0, 18)}>

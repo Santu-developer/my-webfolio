@@ -92,43 +92,139 @@ const projects = [
   },
   {
     slug: 'energy-analytics-platform',
-    title: 'Enacto – Energy Analytics Platform',
+    title: 'Enacto – Energy Management Platform (Enterprise)',
     description:
-      'Operational analytics platform delivering fast dashboards and reliable reporting—built with Spring Boot services, optimized SQL, and containerized deployment.',
-    tags: ['Java', 'Spring Boot', 'Spring MVC', 'MySQL', 'AWS', 'Docker'],
+      'Enterprise energy management platform for monitoring and optimizing energy consumption across facilities—enhanced through maintenance, bug fixes, i18n improvements, and secure credential handling.',
+    tags: ['Java', 'GWT', 'MVP Architecture', 'Oracle DB', 'JIRA', 'i18n', 'HashiCorp Vault', 'Enterprise App'],
     links: {
       // github: 'https://github.com/XX/energy-analytics-platform',
       demo: '#',
     },
     details: {
       motive:
-        'Provide a reliable analytics platform to monitor operations and enable data-driven decisions via fast, consistent dashboards and reports.',
+        'Support monitoring, analysis, and optimization of energy consumption across multiple facilities, enabling actionable insights for operational efficiency and sustainability.',
       architecture: [
-        'Backend services built with Spring Boot expose REST endpoints for dashboard/report consumption.',
-        'SQL queries and service logic optimized for performance under real reporting workloads.',
-        'Containerized runtime for consistent deployments and environment parity.',
-        'Cloud deployment model designed for scalability and observability.',
+        'Large-scale enterprise web application built with Java + Google Web Toolkit (GWT) using MVP architecture patterns.',
+        'Oracle DB-backed data workflows with UI-to-database synchronization across multiple application modules.',
+        'Issue-driven development via JIRA with debugging and stabilization of legacy modules.',
+        'Secure secret management using HashiCorp Vault to avoid hardcoded credentials/config values.',
       ],
       techStack: [
-        'Backend: Java, Spring Boot, Spring MVC',
-        'Database: MySQL / SQL',
-        'Containerization/Infra: Docker, AWS (deployment)',
+        'Application: Java, Google Web Toolkit (GWT), MVP Architecture',
+        'Database: Oracle DB (SQL)',
+        'Security: HashiCorp Vault (secrets/credentials)',
+        'Tooling: JIRA (issue tracking), Debugging/maintenance workflows',
       ],
       features: [
-        'Operational dashboards and reporting endpoints',
-        'Performance-focused service and query optimization',
-        'Structured APIs designed for dashboard consumption',
+        'Maintenance, enhancement, and bug-fix delivery for production modules',
+        'Language preference persistence with i18n support for dynamic language switching',
+        'Improved stability via debugging legacy flows and fixing data synchronization issues',
+        'More secure runtime configuration by integrating Vault-managed secrets',
       ],
       role: [
-        'Developed and optimized backend services and SQL queries for dashboard/report performance.',
-        'Worked on containerized deployment readiness and stability improvements.',
+        'Handled JIRA tickets: analyzed issues, debugged legacy modules, and delivered production-ready fixes.',
+        'Fixed critical functional issues (e.g., language preference persistence) and implemented i18n enhancements.',
+        'Troubleshot Oracle DB data flow problems and optimized queries to ensure accurate updates.',
+        'Improved security by integrating HashiCorp Vault for secure credential management.',
+        'Collaborated with cross-functional teams to ship enhancements and deploy fixes smoothly.',
       ],
       conclusion:
-        'A backend-first analytics system focused on performance, reliability, and deployment consistency for real operational reporting needs.',
+        'A complex enterprise platform improved through consistent maintenance, stability upgrades, i18n enhancements, and stronger security practices.',
       improvements: [
-        'Add caching strategy for heavy dashboard queries (where safe)',
-        'Add automated load/performance testing and profiling',
-        'Improve observability: metrics, tracing, alerting dashboards',
+        'Add automated regression coverage around critical legacy workflows',
+        'Expand monitoring/observability around data-sync and user preference flows',
+        'Broaden Vault adoption for environment-specific configuration across modules',
+      ],
+    },
+  },
+  {
+    slug: 'recruitment-portal',
+    title: 'Recruitment Portal – In‑House Hiring Management System',
+    description:
+      'Internal hiring management system to streamline recruitment workflows, candidate management, and recruitment lifecycle tracking with secure REST APIs and PostgreSQL.',
+    tags: ['Java', 'Spring Boot', 'REST APIs', 'PostgreSQL', 'JUnit', 'Mockito', 'Figma'],
+    links: {
+      demo: '#',
+      // github: 'https://github.com/<your-username>/recruitment-portal',
+    },
+    details: {
+      motive:
+        'Streamline recruitment workflows and internal collaboration through a centralized platform that manages candidate data, stages, and hiring processes.',
+      architecture: [
+        'Backend-first architecture using Spring Boot services exposing RESTful APIs for recruitment workflows.',
+        'Relational data model in PostgreSQL with optimized queries for efficient candidate and stage management.',
+        'API documentation and internal documentation to support team collaboration and onboarding.',
+        'Frontend integration aligned with Figma designs to ensure smooth UX and UI-to-API consistency.',
+      ],
+      techStack: [
+        'Backend: Java, Spring Boot, REST APIs',
+        'Database: PostgreSQL',
+        'Testing: JUnit, Mockito',
+        'Collaboration: Figma (UI collaboration), Documentation (API flows + features)',
+      ],
+      features: [
+        'Candidate onboarding and profile management APIs',
+        'Recruitment lifecycle tracking across stages',
+        'Centralized candidate data handling and internal workflow management',
+        'Automated tests for reliability and code quality',
+      ],
+      role: [
+        'Developed the application from scratch using Java and Spring Boot with scalable backend services.',
+        'Designed and implemented secure REST APIs for onboarding, profiles, and lifecycle tracking.',
+        'Designed PostgreSQL schemas and optimized queries for performance and data integrity.',
+        'Added automated tests using JUnit/Mockito to improve reliability and maintain quality.',
+        'Collaborated on UI improvements based on Figma designs and ensured frontend–backend integration.',
+        'Documented system features, API flows, and development processes for team onboarding.',
+      ],
+      conclusion:
+        'A reliable internal recruitment system that improves hiring operations through clean APIs, structured data modeling, and a workflow-focused backend.',
+      improvements: [
+        'Add role-based access and audit logs for sensitive hiring operations',
+        'Add advanced search/filtering for candidate pipelines and reporting dashboards',
+        'Add CI checks for tests, formatting, and API contract validation',
+      ],
+    },
+  },
+  {
+    slug: 'itrshift',
+    title: 'ITRShift – AI‑Powered Integration Migration Platform',
+    description:
+      'Enterprise integration migration platform UI built with React—focused on reusable components, workflow screens, dashboards, and clean API integration for real-time updates.',
+    tags: ['React', 'JavaScript', 'Component Architecture', 'API Integration', 'Dashboards', 'Forms'],
+    links: {
+      demo: '#',
+      // github: 'https://github.com/<your-username>/itrshift',
+    },
+    details: {
+      motive:
+        'Simplify and accelerate enterprise integration migration workflows through automation and a user-friendly interface.',
+      architecture: [
+        'React UI organized around reusable, component-based architecture for scalability and consistent UX.',
+        'API integration layer connecting frontend modules with backend services for seamless data flow and updates.',
+        'Workflow-first UX: screens, dashboards, and form-based modules aligned to business processes.',
+      ],
+      techStack: [
+        'Frontend: React.js, JavaScript',
+        'Integration: REST API consumption and state-driven UI updates',
+      ],
+      features: [
+        'Workflow screens and dashboards for migration operations',
+        'Form-based modules for configuration and operational inputs',
+        'Reusable UI components to improve consistency and delivery speed',
+        'Improved performance/usability through clean coding practices',
+      ],
+      role: [
+        'Developed and enhanced the UI layer using React with reusable components and smooth UX focus.',
+        'Implemented API integrations to connect frontend modules with backend services and real-time updates.',
+        'Built interactive screens (workflows, dashboards, forms) based on project requirements.',
+        'Collaborated with backend and design teams to align UI with business workflows.',
+      ],
+      conclusion:
+        'A workflow-oriented React frontend that improves usability and accelerates delivery for an enterprise migration platform.',
+      improvements: [
+        'Add component-level tests and integration tests for critical workflows',
+        'Add performance profiling for heavy dashboard views',
+        'Standardize API error handling and empty/loading states across modules',
       ],
     },
   },
