@@ -16,6 +16,7 @@ import {
   SiIntellijidea,
   SiEclipseide,
   SiJira,
+  SiTrello,
   SiBootstrap,
   SiTailwindcss,
   SiPostgresql,
@@ -64,6 +65,7 @@ const skills = [
   { name: 'Eclipse', level: 70, icon: SiEclipseide, category: 'Tools' },
   { name: 'VS Code', level: 80, icon: FiCode, category: 'Tools' },
   { name: 'Jira', level: 65, icon: SiJira, category: 'Tools' },
+  { name: 'Trello', level: 60, icon: SiTrello, category: 'Tools' },
 ]
 
 export default skills
