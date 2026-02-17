@@ -41,7 +41,11 @@ export default function Navbar() {
     <header className="sticky-top">
       <nav className={`navbar navbar-expand-lg glass-nav ${scrolled ? 'is-scrolled' : ''}`}>
         <div className="container">
-          <a href="#home" onClick={onNavClick('home')} className="navbar-brand d-flex align-items-center gap-2">
+          <a
+            href="#home"
+            onClick={onNavClick('home')}
+            className="navbar-brand d-flex align-items-center gap-2"
+          >
             <LogoMark size={22} />
             <span className="d-flex flex-column lh-1">
               <strong className="fw-bold">Santosh Patidar</strong>
@@ -63,30 +67,12 @@ export default function Navbar() {
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2">
               {ITEMS.map((item) => (
                 <li key={item.id} className="nav-item">
-                  <a
-                    className="nav-link"
-                    href={`#${item.id}`}
-                    onClick={onNavClick(item.id)}
-                  >
+                  <a className="nav-link" href={`#${item.id}`} onClick={onNavClick(item.id)}>
                     {item.label}
                   </a>
                 </li>
               ))}
-              <li className="nav-item">
-                <a href="/cv" className="btn btn-outline-secondary btn-sm ms-lg-2" title="View CV">
-                  CV
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  href="#contact"
-                  onClick={onNavClick('contact')}
-                  className="btn btn-primary btn-sm ms-lg-2"
-                  title="Hire me"
-                >
-                  Hire me
-                </a>
-              </li>
+
               <li className="nav-item ms-lg-2">
                 <DarkModeToggle />
               </li>
