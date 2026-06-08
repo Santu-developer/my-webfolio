@@ -365,6 +365,77 @@ const projects = [
       ],
     },
   },
+  {
+  slug: 'marriott-vacation-club',
+  title: 'Interval International – Marriott Vacation Club',
+  description:
+    'Enterprise vacation ownership platform with AS400 integration, Exchange Plus Cash workflows, trading power validation, and real-time eligibility processing.',
+
+  tags: [
+    'Java',
+    'Spring Boot',
+    'AS400',
+    'Legacy Modernization',
+    'Enterprise Application',
+    'REST APIs',
+    'Layered Architecture',
+    'Integration'
+  ],
+
+  links: {
+    demo: '#'
+  },
+
+  details: {
+    motive:
+      'Enable Marriott Vacation Club owners to exchange owned units using a hybrid Exchange Plus Cash model with transparent pricing and real-time eligibility validation.',
+
+    architecture: [
+      'Handler → Service → AS400 Connector → UI rendering flow.',
+      'Real-time AS400 data queue integration for Trading Power and eligibility checks.',
+      'Business rule engine for exchange validation and pricing decisions.',
+      'Legacy enterprise architecture with multiple vacation ownership workflows.'
+    ],
+
+    techStack: [
+      'Java',
+      'Spring Framework',
+      'AS400 Integration',
+      'REST APIs',
+      'Enterprise Legacy Systems',
+      'Layered Architecture'
+    ],
+
+    features: [
+      'Exchange Plus Cash booking workflow',
+      'Real-time Trading Power validation',
+      'Eligibility verification through AS400',
+      'Hybrid booking model (Unit + Cash)',
+      'Transparent pricing calculations',
+      'Cross-module data consistency'
+    ],
+
+    role: [
+      'Implemented Exchange Plus Cash module within an enterprise legacy platform.',
+      'Integrated live AS400 services replacing mock implementations.',
+      'Developed backend workflows across Handler, Service, and Connector layers.',
+      'Implemented Trading Power-based business validations.',
+      'Resolved AS400 integration and response-handling issues.',
+      'Ensured consistency between My Units, Deposit, and Exchange modules.',
+      'Improved frontend data alignment through accurate backend mappings.'
+    ],
+
+    conclusion:
+      'Delivered a business-critical vacation exchange feature by integrating real-time AS400 services and implementing complex exchange validation logic within a large-scale enterprise platform.',
+
+    improvements: [
+      'Migration of legacy integrations to modern service architecture',
+      'Enhanced monitoring and logging for AS400 transactions',
+      'Automated integration testing for exchange workflows',
+      'Performance optimization for high-volume eligibility checks'
+    ]
+  }
+},
 ]
 
 export default projects
