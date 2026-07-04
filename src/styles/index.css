@@ -243,6 +243,123 @@ h1, h2, h3, h4, h5, h6,
 	.cv-frame { height: 90vh; }
 }
 
+/* ==============================
+   Mobile Responsive: ≤768px
+   Only overrides for small screens
+   ============================== */
+@media (max-width: 768px) {
+
+  /* --- Hero: profile image --- */
+  /* Fixed 280px circle overflows on small screens; scale it down */
+  #home [style*="width: 280"],
+  #home [style*="width:280"] {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  /* --- Hero: social icon circles --- */
+  #home .btn-outline-primary.rounded-circle[style*="width: 50"],
+  #home .btn-outline-primary.rounded-circle[style*="width:50"] {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  /* --- Hero: action buttons wrap properly --- */
+  #home .d-flex.gap-2:has(.btn) {
+    flex-wrap: wrap;
+  }
+  #home .d-flex.gap-2:has(.btn) .btn {
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+  }
+
+  /* --- Hero: typewriter heading smaller on mobile --- */
+  #home .display-5 {
+    font-size: calc(1.425rem + 1.2vw);
+  }
+
+  /* --- Hero: reduce glass-card padding on very small screens --- */
+  #home .glass-card.p-4.p-md-5 {
+    padding: 1.25rem !important;
+  }
+
+  /* --- ProjectCard: title + Live Demo button side by side --- */
+  .card-body .d-flex.align-items-start.gap-2 {
+    flex-wrap: wrap;
+  }
+  .card-body .d-flex.align-items-start.gap-2 h3,
+  .card-body .d-flex.align-items-start.gap-2 .h5 {
+    flex: 1 1 100%;
+  }
+
+  /* --- ProjectDetail: heading wrap properly --- */
+  .card .h3.mb-0 {
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+  /* --- CV toolbar: stack buttons on very small screens --- */
+  .cv-toolbar {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .cv-toolbar .h5 {
+    flex: 1 1 100%;
+  }
+
+  /* --- Navbar: prevent brand overflow --- */
+  .navbar-brand {
+    max-width: 70%;
+    overflow: hidden;
+  }
+  .navbar-brand strong {
+    font-size: 0.95rem;
+  }
+
+  /* --- General: ensure no horizontal scroll --- */
+  section {
+    overflow-x: hidden;
+  }
+
+  /* --- Reduce text-muted paragraph font on mobile for readability --- */
+  .lead {
+    font-size: 1rem;
+  }
+
+  /* --- Contact: reduce padding inside cards on mobile --- */
+  .glass-card.p-4.p-md-5 {
+    padding: 1.25rem !important;
+  }
+}
+
+/* ==============================
+   Small phones: ≤480px
+   ============================== */
+@media (max-width: 480px) {
+  /* Even smaller hero image */
+  #home [style*="width: 200"],
+  #home [style*="width:200"] {
+    width: 160px !important;
+    height: 160px !important;
+  }
+
+  /* Hero buttons: full width on tiny screens */
+  #home .d-flex.gap-2:has(.btn) {
+    flex-direction: column;
+  }
+  #home .d-flex.gap-2:has(.btn) .btn {
+    width: 100%;
+  }
+
+  /* Smaller footer text */
+  footer small {
+    font-size: 0.75rem;
+  }
+}
+
 /* Print styles: hide chrome and backgrounds when printing */
 @media print {
 	body { background: #fff !important; }
