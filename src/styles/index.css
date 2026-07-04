@@ -333,6 +333,45 @@ h1, h2, h3, h4, h5, h6,
   .glass-card.p-4.p-md-5 {
     padding: 1.25rem !important;
   }
+
+  /* --- Fix Framer Motion animations not triggering on mobile --- */
+  /* About, Skills, Projects sections have viewport amount:0.5 threshold.
+     On mobile these sections are very tall, so 50% may never be in view.
+     Force the glass-card and all motion children visible. */
+  #about .glass-card,
+  #skills .glass-card,
+  #projects .glass-card {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: translateY(0) !important;
+  }
+
+  /* Override any child motion elements with opacity:0 inline style */
+  #about [style*="opacity: 0"],
+  #about [style*="opacity:0"],
+  #skills [style*="opacity: 0"],
+  #skills [style*="opacity:0"],
+  #projects [style*="opacity: 0"],
+  #projects [style*="opacity:0"] {
+    opacity: 1 !important;
+  }
+
+  /* Override transform inline styles from motion elements */
+  #about [style*="translateY"],
+  #about [style*="translateX"],
+  #skills [style*="translateY"],
+  #skills [style*="translateX"],
+  #projects [style*="translateY"],
+  #projects [style*="translateX"] {
+    transform: none !important;
+  }
+
+  /* Override filter inline styles from motion elements */
+  #about [style*="blur"],
+  #skills [style*="blur"],
+  #projects [style*="blur"] {
+    filter: none !important;
+  }
 }
 
 /* ==============================
