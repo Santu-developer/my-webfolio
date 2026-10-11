@@ -366,76 +366,126 @@ const projects = [
     },
   },
   {
-  slug: 'marriott-vacation-club',
-  title: 'Interval International – Marriott Vacation Club',
-  description:
-    'Enterprise vacation ownership platform with AS400 integration, Exchange Plus Cash workflows, trading power validation, and real-time eligibility processing.',
-
-  tags: [
-    'Java',
-    'Spring Boot',
-    'AS400',
-    'Legacy Modernization',
-    'Enterprise Application',
-    'REST APIs',
-    'Layered Architecture',
-    'Integration'
-  ],
-
-  links: {
-    demo: '#'
-  },
-
-  details: {
-    motive:
-      'Enable Marriott Vacation Club owners to exchange owned units using a hybrid Exchange Plus Cash model with transparent pricing and real-time eligibility validation.',
-
-    architecture: [
-      'Handler → Service → AS400 Connector → UI rendering flow.',
-      'Real-time AS400 data queue integration for Trading Power and eligibility checks.',
-      'Business rule engine for exchange validation and pricing decisions.',
-      'Legacy enterprise architecture with multiple vacation ownership workflows.'
-    ],
-
-    techStack: [
+    slug: 'marriott-vacation-club',
+    title: 'Interval International – Marriott Vacation Club',
+    description:
+      'Enterprise vacation ownership platform with AS400 integration, Exchange Plus Cash workflows, trading power validation, and real-time eligibility processing.',
+    tags: [
       'Java',
-      'Spring Framework',
-      'AS400 Integration',
+      'Spring Boot',
+      'AS400',
+      'Legacy Modernization',
+      'Enterprise Application',
       'REST APIs',
-      'Enterprise Legacy Systems',
-      'Layered Architecture'
+      'Layered Architecture',
+      'Integration',
     ],
-
-    features: [
-      'Exchange Plus Cash booking workflow',
-      'Real-time Trading Power validation',
-      'Eligibility verification through AS400',
-      'Hybrid booking model (Unit + Cash)',
-      'Transparent pricing calculations',
-      'Cross-module data consistency'
+    links: {
+      demo: '#',
+    },
+    details: {
+      motive:
+        'Enable Marriott Vacation Club owners to exchange owned units using a hybrid Exchange Plus Cash model with transparent pricing and real-time eligibility validation.',
+      architecture: [
+        'Handler → Service → AS400 Connector → UI rendering flow.',
+        'Real-time AS400 data queue integration for Trading Power and eligibility checks.',
+        'Business rule engine for exchange validation and pricing decisions.',
+        'Legacy enterprise architecture with multiple vacation ownership workflows.',
+      ],
+      techStack: [
+        'Java',
+        'Spring Framework',
+        'AS400 Integration',
+        'REST APIs',
+        'Enterprise Legacy Systems',
+        'Layered Architecture',
+      ],
+      features: [
+        'Exchange Plus Cash booking workflow',
+        'Real-time Trading Power validation',
+        'Eligibility verification through AS400',
+        'Hybrid booking model (Unit + Cash)',
+        'Transparent pricing calculations',
+        'Cross-module data consistency',
+      ],
+      role: [
+        'Implemented Exchange Plus Cash module within an enterprise legacy platform.',
+        'Integrated live AS400 services replacing mock implementations.',
+        'Developed backend workflows across Handler, Service, and Connector layers.',
+        'Implemented Trading Power-based business validations.',
+        'Resolved AS400 integration and response-handling issues.',
+        'Ensured consistency between My Units, Deposit, and Exchange modules.',
+        'Improved frontend data alignment through accurate backend mappings.',
+      ],
+      conclusion:
+        'Delivered a business-critical vacation exchange feature by integrating real-time AS400 services and implementing complex exchange validation logic within a large-scale enterprise platform.',
+      improvements: [
+        'Migration of legacy integrations to modern service architecture',
+        'Enhanced monitoring and logging for AS400 transactions',
+        'Automated integration testing for exchange workflows',
+        'Performance optimization for high-volume eligibility checks',
+      ],
+    },
+  },
+  {
+    slug: 'ford-global-uptime-command-center',
+    title: 'Ford Global Uptime Command Center 2.0',
+    description:
+      'Backend platform for Ford’s case management and data migration workflows—covering vehicle cases, support requests, GraphQL APIs, production validation, and incident root-cause analysis.',
+    tags: [
+      'Java 21',
+      'Spring Boot 3.x',
+      'GraphQL',
+      'PostgreSQL',
+      'Gradle',
+      'Redis',
+      'JPA/Hibernate',
+      'REST APIs',
+      'Data Migration',
+      'Production Support',
     ],
-
-    role: [
-      'Implemented Exchange Plus Cash module within an enterprise legacy platform.',
-      'Integrated live AS400 services replacing mock implementations.',
-      'Developed backend workflows across Handler, Service, and Connector layers.',
-      'Implemented Trading Power-based business validations.',
-      'Resolved AS400 integration and response-handling issues.',
-      'Ensured consistency between My Units, Deposit, and Exchange modules.',
-      'Improved frontend data alignment through accurate backend mappings.'
-    ],
-
-    conclusion:
-      'Delivered a business-critical vacation exchange feature by integrating real-time AS400 services and implementing complex exchange validation logic within a large-scale enterprise platform.',
-
-    improvements: [
-      'Migration of legacy integrations to modern service architecture',
-      'Enhanced monitoring and logging for AS400 transactions',
-      'Automated integration testing for exchange workflows',
-      'Performance optimization for high-volume eligibility checks'
-    ]
-  }
-},
+    links: {
+      demo: '#',
+    },
+    details: {
+      motive:
+        'Support Ford’s mission-critical uptime and case management operations by delivering stable backend services, validating migrated data, and resolving production issues across synchronization and metadata workflows.',
+      architecture: [
+        'Spring Boot 3 backend services for Case Management and Support Request workflows.',
+        'GraphQL API layer for structured data access and metadata validation across client and backend systems.',
+        'PostgreSQL-backed persistence with complex SQL validation, reconciliation, and migration checks.',
+        'Production incident analysis spanning landing tables, sync services, CM cases, metadata, and API responses.',
+      ],
+      techStack: [
+        'Backend: Java 21, Spring Boot 3.x, GraphQL, REST APIs',
+        'Data: PostgreSQL, SQL, JPA/Hibernate, Redis',
+        'Build & Tools: Gradle, Git, Jira, IntelliJ IDEA',
+        'Operations: Data migration validation, production debugging, release support',
+      ],
+      features: [
+        'Backend development for Vehicle Cases (VB) and Support Requests (SR)',
+        'Large-scale case migration validation from legacy systems into the new platform',
+        'SQL-based reconciliation between source (VRM/Pega) and target (Case Management) data',
+        'Production issue investigation for Customer, FIN, Model, Trial Version, DRI Transfer, GTAC, External Links, and Sync Services',
+        'Metadata and API consistency checks across environments and services',
+      ],
+      role: [
+        'Developed and enhanced key backend functionalities for Ford Global Uptime Command Center 2.0.',
+        'Worked on major Case Management data migration workstreams and ensured validation across source and target systems.',
+        'Performed end-to-end data validation using SQL, PostgreSQL queries, and backend trace analysis.',
+        'Investigated root causes for event ordering issues, missing records, metadata mismatches, and synchronization defects.',
+        'Collaborated with BFF, UI, Data Integration, BFS, QA, and Product teams to resolve production defects and support releases.',
+        'Worked closely with GraphQL APIs, database schemas, and backend integrations to verify correctness of API responses.',
+      ],
+      conclusion:
+        'This project reflects enterprise-scale backend development, production troubleshooting, and data migration leadership in a critical Ford operational platform.',
+      improvements: [
+        'Strengthen automated regression checks around migration validation and metadata synchronization',
+        'Improve observability for event ordering and sync service failure traces',
+        'Expand automated SQL reconciliation coverage across regions and release cycles',
+      ],
+    },
+  },
 ]
 
 export default projects
